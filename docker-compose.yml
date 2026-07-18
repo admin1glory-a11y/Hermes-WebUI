@@ -6,14 +6,14 @@ services:
     restart: unless-stopped
     command: gateway run
     ports:
-      - "8642:8642"   # API + Gateway
-      - "9119:9119"   # Hermes Dashboard
+      - "8642:8642"
+      - "9119:9119"
     volumes:
       - hermes-data:/opt/data
     environment:
       - HERMES_DASHBOARD=1
       - API_SERVER_ENABLED=true
-      - API_SERVER_KEY=${API_SERVER_KEY:-change-this-to-a-strong-secret}
+      - API_SERVER_KEY=${API_SERVER_KEY:-supersecretkeychangeit}
 
   open-webui:
     image: ghcr.io/open-webui/open-webui:main
@@ -24,7 +24,7 @@ services:
       - open-webui-data:/app/backend/data
     environment:
       - OPENAI_API_BASE_URL=http://hermes:8642/v1
-      - OPENAI_API_KEY=${API_SERVER_KEY:-change-this-to-a-strong-secret}
+      - OPENAI_API_KEY=${API_SERVER_KEY:-supersecretkeychangeit}
       - ENABLE_OLLAMA_API=false
     depends_on:
       - hermes
