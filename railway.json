@@ -1,11 +1,6 @@
 {
   "$schema": "https://railway.app/json-schema.json",
   "build": {
-    "builder": "DOCKER_COMPOSE",
-    "dockerfilePath": "docker-compose.yml"
-  },
-  "deploy": {
-    "startCommand": "docker compose up",
-    "restartPolicy": "on-failure"
+    "builder": "DOCKER_COMPOSE"
   }
 }
